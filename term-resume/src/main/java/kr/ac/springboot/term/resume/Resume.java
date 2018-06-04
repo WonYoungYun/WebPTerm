@@ -1,11 +1,13 @@
 package kr.ac.springboot.term.resume;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import kr.ac.springboot.term.experience.Experience;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
+@Table(name = "tbl_resumes")
 public class Resume {
 
     public Resume(){
@@ -21,6 +23,10 @@ public class Resume {
     private Long rno;
 
     private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "resume", fetch = FetchType.LAZY)
+    private List<Experience> replie;
 
     public Long getRno() {
         return rno;

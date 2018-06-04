@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>ENO</th>
+            <th>Text</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>[[${result.eno}]]</a></td>
+            <td>[[${result.experienceText}]]</td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" th:href="@{/experience/delete/} + ${result.eno}">delete</a>
+    <a class="btn btn-primary" th:href="@{/experience/edit/} + ${result.eno}">update</a>
+
+</div>
