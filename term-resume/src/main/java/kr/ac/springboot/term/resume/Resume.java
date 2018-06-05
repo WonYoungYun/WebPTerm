@@ -1,32 +1,18 @@
 package kr.ac.springboot.term.resume;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import kr.ac.springboot.term.experience.Experience;
-
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "tbl_resumes")
 public class Resume {
-
-    public Resume(){
-
-    }
-
-    public Resume(String name) {
-        this.name = name;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long rno;
 
     private String name;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "resume", fetch = FetchType.LAZY)
-    private List<Experience> replie;
 
     public Long getRno() {
         return rno;
