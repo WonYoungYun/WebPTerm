@@ -18,9 +18,7 @@ public class ResumeController {
         Resume resume = new Resume();
         resume.setName("YourName");
         model.addAttribute("resume", resume);
-        return "index";
+        return "resume";
     }
-
-
 
 }
