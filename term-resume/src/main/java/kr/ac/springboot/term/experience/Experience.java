@@ -18,15 +18,15 @@ public class Experience {
 		
 	}
 	
-	public Experience(String exText) {
-		this.exText = exText;
+	public Experience(String text) {
+		this.text = text;
 	}
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long eno;
 	
-	private String exText;
+	private String text;
 
 	@JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
@@ -40,17 +40,17 @@ public class Experience {
 		this.eno = eno;
 	}
 
-	public String getExText() {
-		return exText;
+	public String getText() {
+		return text;
 	}
 
-	public void setExText(String exText) {
-		this.exText = exText;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	@Override
 	public String toString() {
-		return "experience [eno=" + eno + ", exText=" + exText + "]";
+		return "experience [eno=" + eno + ", text=" + text + "]";
 	}
 	
 	
