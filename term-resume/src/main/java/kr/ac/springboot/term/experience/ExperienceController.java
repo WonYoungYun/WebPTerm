@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ExperienceController {
@@ -18,7 +19,7 @@ public class ExperienceController {
 	
     @GetMapping("/experience")
     public void experienceIndex(Model model) {
-    	model.addAttribute("result", repo.findAllByOrderByEnoDesc());
+    	model.addAttribute("result", repo.findAllByOrderByDateDesc());
     }
     
     @GetMapping("/{eno}")
@@ -66,10 +67,16 @@ public class ExperienceController {
         Optional<Experience> experience = repo.findById(vo.getEno());
         if (experience.isPresent()) {
             experience.get().setText(vo.getText());
+            experience.get().setName(vo.getName());
+            experience.get().setRole(vo.getRole());
+            experience.get().setDate(vo.getDate());
             repo.save(experience.get());
         } else {
             repo.save(vo);
         }
         return "redirect:/experience";
     }
+    
 }
+
+

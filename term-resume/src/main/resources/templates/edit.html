@@ -32,17 +32,26 @@
     <div class="container-fluid p-0">
     	<section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
 			<form th:action="@{/edit}" method="post">
-	
 				<div class="form-group">
 					<label>번호</label>
 					<input readonly="readonly" class="form-control" name="eno" th:value="${vo.eno}"  />
 				</div>
-	
 				<div class="form-group">
-					<label>내용</label>
-					<input class="form-control" name="Text" th:value="${vo.text}" placeholder="경력을 입력하세요." />
-				</div>
-				
+		           	<label>역활</label>
+		          	<input class="form-control" name="role" th:value="${vo.role}" placeholder="역활을 입력하세요." />
+		       	</div>
+		       	<div class="form-group">
+		           	<label>과제 이름</label>
+		          	<input class="form-control" name="name" th:value="${vo.name}" placeholder="과제 이름을 입력하세요." />
+		       	</div>
+		        <div class="form-group">
+		           	<label>내용 설명</label>
+		          	<input class="form-control" name="text" th:value="${vo.text}" placeholder="내용을 입력하세요." />
+		       	</div>
+		       	<div class="form-group">
+		           	<label>기간</label>
+		          	<input class="form-control" name="date" th:value="${vo.date}" placeholder="기간을 입력하세요." />
+		       	</div>
 				<button type="submit" class="btn btn-primary">등록</button>
 				<button type="reset" class="btn btn-warning">초기화</button>
 			</form>

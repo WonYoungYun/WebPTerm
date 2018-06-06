@@ -42,34 +42,21 @@
 						<thead>
 							<tr>
 								<th>번호</th>
-								<th>내용</th>
+								<th>역활</th>
+								<th>과제 이름</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="experience:${result}">
-								<td><a th:href='${experience.eno}'>[[${experience.eno}]]</a></td>
-								<td>[[${experience.text}]]</td>
+								<td>[[${experience.date}]]</td>
+								<td>[[${experience.role}]]</td>
+								<td><a th:href='${experience.eno}'>[[${experience.name}]]</a></td>
 							</tr>
 						</tbody>
 					</table>
                 <hr/>
 
-                <div class="resume-item d-flex flex-column flex-md-row mb-5">
-                    <div class="resume-content mr-auto">
-                        <h3 class="mb-0">"역할</h3>
-                        <div class="subheading mb-3">"과제 이름"</div>
-                        <p>"내용 설명"</p>
-                        <div>
-                        <!--  
-                            <button class="btn-info" onclick="location.href='register'"> 수정</button>
-                            <button class="btn-info" onclick="location.href='register'"> 삭제</button>
-                        -->
-                        </div>
-                    </div>
-                    <div class="resume-date text-md-right">
-                        <span class="text-primary">"기간"</span>
-                    </div>
-                </div>
+
             </div>
         </section>
     </div>

@@ -18,7 +18,10 @@ public class Experience {
 		
 	}
 	
-	public Experience(String text) {
+	public Experience(String role, String name, String date, String text) {
+		this.role = role;
+		this.name = name;
+		this.date = date;
 		this.text = text;
 	}
 	
@@ -26,18 +29,47 @@ public class Experience {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long eno;
 	
+	private String role;
+	private String name;
+	private String date;
 	private String text;
+
 
 	@JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     private Resume resume;
-	
+
+
 	public Long getEno() {
 		return eno;
 	}
 
 	public void setEno(Long eno) {
 		this.eno = eno;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public String getText() {
@@ -48,10 +80,21 @@ public class Experience {
 		this.text = text;
 	}
 
+	public Resume getResume() {
+		return resume;
+	}
+
+	public void setResume(Resume resume) {
+		this.resume = resume;
+	}
+
 	@Override
 	public String toString() {
-		return "experience [eno=" + eno + ", text=" + text + "]";
+		return "Experience [eno=" + eno + ", role=" + role + ", name=" + name + ", date=" + date + ", text=" + text
+				+ ", resume=" + resume + "]";
 	}
+	
+
 	
 	
 	

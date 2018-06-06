@@ -20,7 +20,7 @@ public class DataLoader implements ApplicationRunner {
 	
     @Override
     public void run(ApplicationArguments args) {
-    	IntStream.range(1, 10).forEach(i -> experiRepo.save(new Experience("text"+i)));
+    	IntStream.range(1, 10).forEach(i -> experiRepo.save(new Experience("role"+i, "name"+i, ""+(i+2000), "text"+i)));
     }
 
 }
