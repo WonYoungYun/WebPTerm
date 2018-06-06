@@ -1,5 +1,7 @@
 package kr.ac.springboot.term.experience;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 
 @Controller
 public class ExperienceController {
@@ -51,4 +51,25 @@ public class ExperienceController {
         return "redirect:/experience";
     }
     
+    @GetMapping("/{eno}/edit")
+    public String editGet(@PathVariable("eno") long eno, @ModelAttribute("vo") Experience vo, Model model) {
+        if (repo.findById(eno).isPresent()) {
+            model.addAttribute("vo", repo.findById(eno).get());
+        } else {
+            return "errors/404";
+        }
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    public String editPost(@ModelAttribute("vo") Experience vo) {
+        Optional<Experience> experience = repo.findById(vo.getEno());
+        if (experience.isPresent()) {
+            experience.get().setText(vo.getText());
+            repo.save(experience.get());
+        } else {
+            repo.save(vo);
+        }
+        return "redirect:/experience";
+    }
 }
