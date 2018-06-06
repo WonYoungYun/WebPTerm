@@ -40,4 +40,15 @@ public class ExperienceController {
         repo.save(vo);
         return "redirect:/experience";
     }
+    
+    @GetMapping("/{eno}/delete")
+    public String delete(@PathVariable("eno") long eno) {
+        if (repo.findById(eno).isPresent()) {
+            repo.deleteById(eno);
+        } else {
+            return "errors/404";
+        }
+        return "redirect:/experience";
+    }
+    
 }
