@@ -45,8 +45,12 @@
 			        </tr>
 			        </tbody>
 			    </table>
-			    <a class="btn btn-primary" th:href="@{/delete/} + ${result.eno}">delete</a>
-			    <a class="btn btn-primary" th:href="@{/edit/} + ${result.eno}">update</a>
+			    <div>
+			    <button class="btn-info" onclick="location.href='@{/result.eno/} + ${edit}'"> 수정</button>
+			  	<button class="btn-info" onclick="location.href='@{/result.eno/} + ${delete}'"> 삭제</button>
+			    <!--  <a class="btn btn-primary" th:href="@{/delete/} + ${result.eno}">delete</a>
+			    <a class="btn btn-primary" th:href="@{/edit/} + ${result.eno}">update</a> -->
+			    </div>
         </section>
     </div>
 </div>

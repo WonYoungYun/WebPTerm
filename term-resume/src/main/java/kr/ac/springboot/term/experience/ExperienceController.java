@@ -18,7 +18,7 @@ public class ExperienceController {
 	
     @GetMapping("/experience")
     public void experienceIndex(Model model) {
-    	model.addAttribute("result", repo.findAll());
+    	model.addAttribute("result", repo.findAllByOrderByEnoDesc());
     }
     
     @GetMapping("/{eno}")
@@ -38,6 +38,6 @@ public class ExperienceController {
     @PostMapping("/register")
     public String registerPOST(@ModelAttribute("vo") Experience vo) {
         repo.save(vo);
-        return "redirect:/expereience";
+        return "redirect:/experience";
     }
 }
