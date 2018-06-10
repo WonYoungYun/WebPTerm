@@ -8,12 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import kr.ac.springboot.term.experience.Experience;
 
 @Entity
+@Table(name ="tb1_resume")
 public class Resume {
 	
 	public Resume() {
@@ -29,8 +31,7 @@ public class Resume {
 
     private String name;
 
-    
-    @JsonIgnore
+
     @OneToMany(mappedBy="resume", fetch=FetchType.LAZY)
     private List<Experience> replie;
     

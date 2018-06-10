@@ -1,17 +1,24 @@
 package kr.ac.springboot.term.experience;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import kr.ac.springboot.term.resume.Resume;
 
 @Entity
+@Table(name ="tb1_experience")
 public class Experience {
 	
 	public Experience() {
@@ -34,8 +41,13 @@ public class Experience {
 	private String date;
 	private String text;
 
+    @CreationTimestamp
+    private Timestamp regdate;
+    
+    @UpdateTimestamp
+    private Timestamp updatedate;
+    
 
-	@JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     private Resume resume;
 
@@ -88,11 +100,29 @@ public class Experience {
 		this.resume = resume;
 	}
 
+	public Timestamp getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Timestamp regdate) {
+		this.regdate = regdate;
+	}
+
+	public Timestamp getUpdatedate() {
+		return updatedate;
+	}
+
+	public void setUpdatedate(Timestamp updatedate) {
+		this.updatedate = updatedate;
+	}
+
 	@Override
 	public String toString() {
 		return "Experience [eno=" + eno + ", role=" + role + ", name=" + name + ", date=" + date + ", text=" + text
-				+ ", resume=" + resume + "]";
+				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", resume=" + resume + "]";
 	}
+
+	
 	
 
 	

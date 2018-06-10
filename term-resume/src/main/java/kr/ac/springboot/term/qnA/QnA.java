@@ -1,15 +1,24 @@
-package kr.ac.springboot.term.qna;
+package kr.ac.springboot.term.qnA;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import kr.ac.springboot.term.qnAReply.QnAReply;
+
 @Entity
+@Table(name ="tb1_qna")
 public class QnA {
 	
 	public QnA() {
@@ -33,6 +42,11 @@ public class QnA {
 	@CreationTimestamp
 	private Timestamp regdate;
 
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="qna", fetch=FetchType.LAZY)
+	private List<QnAReply> replies;
+	
 	public Long getQno() {
 		return qno;
 	}

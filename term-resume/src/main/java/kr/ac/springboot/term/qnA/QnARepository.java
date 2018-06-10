@@ -1,4 +1,4 @@
-package kr.ac.springboot.term.qna;
+package kr.ac.springboot.term.qnA;
 
 import java.util.List;
 

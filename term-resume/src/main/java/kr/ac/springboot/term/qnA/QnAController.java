@@ -1,4 +1,4 @@
-package kr.ac.springboot.term.qna;
+package kr.ac.springboot.term.qnA;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
