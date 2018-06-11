@@ -41,17 +41,15 @@
 					<table class="table table-striped table-bordered table-hover">
 						<thead>
 							<tr>
-								<th>번호</th>
-								<th>제목	</th>
-								<th>작성자</th>
+								<th>작성자	</th>
+								<th>제목</th>
 								<th>작성일</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr th:each="qna:${result}">
-								<td>[[${qna.qno}]]</td>
-								<td><a th:href='${qna.qno}'>[[${qna.title}]]</a></td>
-								<td>[[${qna.name}]]</td>
+								<td>[[${qna.title}]]</td>
+								<td><a th:href='${qna.qno}'>[[${qna.name}]]</a></td>
 								<td class="center">[[${#dates.format(qna.regdate, 'yyyy-MM-dd')}]]</td>
 							</tr>
 						</tbody>
