@@ -33,10 +33,11 @@ public class DataLoader implements ApplicationRunner {
 	
     @Override
     public void run(ApplicationArguments args) {
-    	IntStream.range(1, 5).forEach(q -> qnARepo.save(new QnA("title"+q, "name0"+q, "text"+q)));
-    	IntStream.range(1, 5).forEach(r -> qnAReplyRepo.save(new QnAReply("replyText"+r, "replyer"+r, qnARepo.findById((long)r).orElse(null))));
     	IntStream.range(1, 10).forEach(i -> resumeRepo.save(new Resume("name"+i)));
-    	IntStream.range(1, 10).forEach(i -> experiRepo.save(new Experience("role"+i, "name"+i, ""+(i+2000), "text"+i, resumeRepo.findById((long)8+i).orElse(null))));
+    	IntStream.range(1, 5).forEach(i -> qnARepo.save(new QnA("title"+i, "name0"+i, "text"+i)));
+    	IntStream.range(1, 10).forEach(i -> experiRepo.save(new Experience("role"+i, "name"+i, ""+(i+2000), "text"+i, resumeRepo.findById((long)i).orElse(null))));
+    	IntStream.range(1, 5).forEach(i -> qnAReplyRepo.save(new QnAReply("replyText"+i, "replyer"+i, qnARepo.findById((long)i+9).orElse(null))));
+    	
 
     }
 

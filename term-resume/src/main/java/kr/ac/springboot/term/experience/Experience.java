@@ -52,7 +52,6 @@ public class Experience {
     @ManyToOne(fetch=FetchType.LAZY)
     private Resume resume;
 
-
 	public Long getEno() {
 		return eno;
 	}
@@ -125,7 +124,6 @@ public class Experience {
 
 
     
-
 
 	
 	
