@@ -31,9 +31,9 @@ public class Resume {
 
     private String name;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy="resume", fetch=FetchType.LAZY)
-    private List<Experience> replie;
+    private List<Experience> experiences;
     
     public Long getRno() {
         return rno;
@@ -50,4 +50,12 @@ public class Resume {
     public void setName(String name) {
         this.name = name;
     }
+
+	@Override
+	public String toString() {
+		return "Resume [rno=" + rno + ", name=" + name + ", experiences=" + experiences + "]";
+	}
+
+    
+    
 }

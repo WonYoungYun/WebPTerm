@@ -17,8 +17,6 @@ public class QnAReplyController {
 	@Autowired
 	private QnAReplyRepository replyRepo;
 	
-
-	
 	@GetMapping("/{qno}")
 	public ResponseEntity<List<QnAReply>> getReplies(@PathVariable("qno") Long qno) {
 		

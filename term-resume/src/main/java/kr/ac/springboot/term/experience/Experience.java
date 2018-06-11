@@ -25,11 +25,12 @@ public class Experience {
 		
 	}
 	
-	public Experience(String role, String name, String date, String text) {
+	public Experience(String role, String name, String date, String text, Resume resume) {
 		this.role = role;
 		this.name = name;
 		this.date = date;
 		this.text = text;
+		this.resume = resume;
 	}
 	
 	@Id
@@ -47,7 +48,7 @@ public class Experience {
     @UpdateTimestamp
     private Timestamp updatedate;
     
-
+    @JsonIgnore
     @ManyToOne(fetch=FetchType.LAZY)
     private Resume resume;
 
@@ -92,14 +93,6 @@ public class Experience {
 		this.text = text;
 	}
 
-	public Resume getResume() {
-		return resume;
-	}
-
-	public void setResume(Resume resume) {
-		this.resume = resume;
-	}
-
 	public Timestamp getRegdate() {
 		return regdate;
 	}
@@ -116,11 +109,23 @@ public class Experience {
 		this.updatedate = updatedate;
 	}
 
+	public Resume getResume() {
+		return resume;
+	}
+
+	public void setResume(Resume resume) {
+		this.resume = resume;
+	}
+
 	@Override
 	public String toString() {
 		return "Experience [eno=" + eno + ", role=" + role + ", name=" + name + ", date=" + date + ", text=" + text
 				+ ", regdate=" + regdate + ", updatedate=" + updatedate + ", resume=" + resume + "]";
 	}
+
+
+    
+
 
 	
 	

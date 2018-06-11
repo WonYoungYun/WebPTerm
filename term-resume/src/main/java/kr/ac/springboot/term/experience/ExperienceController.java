@@ -3,13 +3,17 @@ package kr.ac.springboot.term.experience;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import kr.ac.springboot.term.resume.Resume;
 
 @Controller
 public class ExperienceController {
@@ -18,7 +22,7 @@ public class ExperienceController {
 	
     @GetMapping("/experience")
     public void experienceIndex(Model model) {
-    	model.addAttribute("result", repo.findAllByOrderByDateDesc());
+    	model.addAttribute("result", repo.findAllByOrderByUpdatedateDesc());
     }
     
     @GetMapping("/{eno}")
@@ -75,6 +79,8 @@ public class ExperienceController {
         }
         return "redirect:/experience";
     }
+    
+
     
 }
 
