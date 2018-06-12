@@ -17,8 +17,13 @@ public class QnAReplyController {
 	@Autowired
 	private QnAReplyRepository replyRepo;
 	
+	@ExceptionHandler(Exception.class)
+	public String qnaReplyException(Exception e) {
+		return "errors/500";
+	}
+	
 	@GetMapping("/{qno}")
-	public ResponseEntity<List<QnAReply>> getReplies(@PathVariable("qno") Long qno) {
+	public ResponseEntity<List<QnAReply>> getReplies(@PathVariable("qno") Long qno) throws Exception{
 		
 		QnA qna = new QnA();
 		qna.setQno(qno);
@@ -27,7 +32,8 @@ public class QnAReplyController {
 	
 	@Transactional
 	@PostMapping("/{qno}")
-	public ResponseEntity<List<QnAReply>> addReply(@PathVariable("qno") Long qno, @RequestBody QnAReply reply){
+	public ResponseEntity<List<QnAReply>> addReply(@PathVariable("qno") Long qno,
+			@RequestBody QnAReply reply) throws Exception{
 		
 		QnA qna = new QnA();
 		qna.setQno(qno);
@@ -43,7 +49,7 @@ public class QnAReplyController {
 	@DeleteMapping("/{qno}/{rno}")
 	public ResponseEntity<List<QnAReply>> remove(
 			@PathVariable("qno") Long qno,
-			@PathVariable("rno") Long rno) {
+			@PathVariable("rno") Long rno) throws Exception{
 		
 		replyRepo.deleteById(rno);
 		
@@ -55,7 +61,8 @@ public class QnAReplyController {
 	
 	@Transactional
 	@PutMapping("/{qno}")
-	public ResponseEntity<List<QnAReply>> modify(@PathVariable("qno") Long qno, @RequestBody QnAReply reply) {
+	public ResponseEntity<List<QnAReply>> modify(@PathVariable("qno") Long qno,
+			@RequestBody QnAReply reply) throws Exception{
 		
 		replyRepo.findById(reply.getRno()).ifPresent(origin -> {
 			origin.setReplyText(reply.getReplyText());
